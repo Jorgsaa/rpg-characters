@@ -5,7 +5,7 @@ import com.jorgsaa.item.ItemEquipExceptionType;
 
 public class InvalidWeaponException extends RuntimeException {
 
-    public InvalidWeaponException(ItemEquipExceptionType type, Character character, Weapon weapon) {
+    public InvalidWeaponException(ItemExceptionType type, Character character, Weapon weapon) {
         super(String.format(type.getMessage(), character, weapon));
     }
 

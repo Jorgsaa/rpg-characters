@@ -2,7 +2,7 @@ package com.jorgsaa.character;
 
 import com.jorgsaa.attribute.PrimaryAttribute;
 import com.jorgsaa.item.Item;
-import com.jorgsaa.item.ItemEquipExceptionType;
+import com.jorgsaa.item.ItemExceptionType;
 import com.jorgsaa.item.Slot;
 import com.jorgsaa.item.armor.Armor;
 import com.jorgsaa.item.armor.ArmorType;
@@ -45,19 +45,19 @@ public abstract class Character {
         // Check level requirement
         if (item.getRequiredLevel() <= level) {
             if (item instanceof Weapon weapon)
-                throw new InvalidWeaponException(ItemEquipExceptionType.LEVEL_INSUFFICIENT, this, weapon);
+                throw new InvalidWeaponException(ItemExceptionType.LEVEL_INSUFFICIENT, this, weapon);
             else if (item instanceof Armor armor) {
-                throw new InvalidArmorException(ItemEquipExceptionType.LEVEL_INSUFFICIENT, this, armor);
+                throw new InvalidArmorException(ItemExceptionType.LEVEL_INSUFFICIENT, this, armor);
             }
         }
 
         // Check class compatibility with weapon type
         if (item instanceof Weapon weapon && !getValidWeaponTypes().contains(weapon.getType()))
-            throw new InvalidWeaponException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, weapon);
+            throw new InvalidWeaponException(ItemExceptionType.CLASS_INCOMPATIBLE, this, weapon);
 
         // Check class compatibility with armor type
         if (item instanceof Armor armor && !getValidArmorTypes().contains(armor.getType()))
-            throw new InvalidArmorException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, armor);
+            throw new InvalidArmorException(ItemExceptionType.CLASS_INCOMPATIBLE, this, armor);
 
         equipment.put(item.getSlot(), item);
     }
