@@ -113,4 +113,8 @@ public abstract class Character {
         );
     }
 
+    public Item getEquipment(Slot slot) {
+        return equipment.get(slot);
+    }
+
 }
