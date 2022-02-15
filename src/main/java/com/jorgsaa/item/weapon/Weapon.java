@@ -24,4 +24,5 @@ public class Weapon extends Item {
         return type;
     }
 
+    //TODO: toString
 }

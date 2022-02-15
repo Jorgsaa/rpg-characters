@@ -26,4 +26,5 @@ public class Armor extends Item {
         return type;
     }
 
+    //TODO: toString
 }
