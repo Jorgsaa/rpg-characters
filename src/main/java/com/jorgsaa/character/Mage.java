@@ -11,6 +11,7 @@ import static com.jorgsaa.item.weapon.WeaponType.STAFF;
 import static com.jorgsaa.item.weapon.WeaponType.WAND;
 
 public class Mage extends Character {
+
     public Mage(String name) {
         super(name);
     }
@@ -39,4 +40,5 @@ public class Mage extends Character {
     protected Double getCharacterDamageMultiplier() {
         return 1 + (0.01d * getTotalPrimaryAttributes().getIntelligence());
     }
+
 }

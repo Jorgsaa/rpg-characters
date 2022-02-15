@@ -1,6 +1,7 @@
 package com.jorgsaa.attribute;
 
 public final class PrimaryAttribute {
+
     private final Integer strength;
     private final Integer dexterity;
     private final Integer intelligence;
@@ -42,4 +43,5 @@ public final class PrimaryAttribute {
     public Integer getIntelligence() {
         return intelligence;
     }
+
 }

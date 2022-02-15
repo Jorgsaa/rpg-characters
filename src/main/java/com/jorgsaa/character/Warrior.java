@@ -10,6 +10,7 @@ import static com.jorgsaa.item.armor.ArmorType.*;
 import static com.jorgsaa.item.weapon.WeaponType.*;
 
 public class Warrior extends Character {
+
     public Warrior(String name) {
         super(name);
     }
@@ -38,4 +39,5 @@ public class Warrior extends Character {
     protected Double getCharacterDamageMultiplier() {
         return 1 + (0.01d * getTotalPrimaryAttributes().getIntelligence());
     }
+
 }

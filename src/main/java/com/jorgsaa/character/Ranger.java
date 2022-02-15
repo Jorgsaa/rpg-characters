@@ -11,6 +11,7 @@ import static com.jorgsaa.item.armor.ArmorType.MAIL;
 import static com.jorgsaa.item.weapon.WeaponType.BOW;
 
 public class Ranger extends Character {
+
     public Ranger(String name) {
         super(name);
     }
@@ -39,4 +40,5 @@ public class Ranger extends Character {
     protected Double getCharacterDamageMultiplier() {
         return 1 + (0.01d * getTotalPrimaryAttributes().getDexterity());
     }
+
 }

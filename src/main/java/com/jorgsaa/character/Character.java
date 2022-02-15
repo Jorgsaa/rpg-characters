@@ -107,4 +107,5 @@ public abstract class Character {
     public String getName() {
         return name;
     }
+
 }

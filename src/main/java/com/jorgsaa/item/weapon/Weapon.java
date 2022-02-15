@@ -23,4 +23,5 @@ public class Weapon extends Item {
     public WeaponType getType() {
         return type;
     }
+
 }

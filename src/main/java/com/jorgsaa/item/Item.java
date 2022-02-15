@@ -1,6 +1,7 @@
 package com.jorgsaa.item;
 
 public abstract class Item {
+
     private final String name;
     private final Integer requiredLevel;
     private final Slot slot;
@@ -22,4 +23,5 @@ public abstract class Item {
     public Slot getSlot() {
         return slot;
     }
+
 }
