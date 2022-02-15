@@ -15,7 +15,7 @@ public abstract class Character {
 
     public abstract PrimaryAttribute getTotalPrimaryAttributes();
 
-    protected abstract Double getCharacterDamage();
+    protected abstract Double getCharacterDamageMultiplier();
 
     public Double getDamage() {
         return 0d;

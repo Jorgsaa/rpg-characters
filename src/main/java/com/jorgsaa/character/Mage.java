@@ -18,7 +18,7 @@ public class Mage extends Character {
     }
 
     @Override
-    protected Double getCharacterDamage() {
+    protected Double getCharacterDamageMultiplier() {
         return null;
     }
 }
