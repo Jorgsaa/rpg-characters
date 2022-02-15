@@ -80,7 +80,7 @@ public abstract class Character {
         return weaponDPS != 0 ? weaponDPS : 1;
     }
 
-    public Double getDamage() {
+    public Double getDPS() {
         return getEquippedWeaponDPS() * getCharacterDamageMultiplier();
     }
 
