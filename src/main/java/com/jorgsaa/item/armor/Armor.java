@@ -13,4 +13,7 @@ public class Armor extends Item {
         this.attributes = attributes;
     }
 
+    public PrimaryAttribute getAttributes() {
+        return attributes;
+    }
 }
