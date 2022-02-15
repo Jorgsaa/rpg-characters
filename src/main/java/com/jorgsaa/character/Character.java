@@ -49,6 +49,12 @@ public abstract class Character {
             }
         }
 
+        if (item instanceof Weapon weapon && !getValidWeaponTypes().contains(weapon.getType()))
+            throw new InvalidWeaponException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, weapon);
+
+        if (item instanceof Armor armor && !getValidArmorTypes().contains(armor.getType()))
+            throw new InvalidArmorException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, armor);
+
         equipment.put(item.getSlot(), item);
     }
 
