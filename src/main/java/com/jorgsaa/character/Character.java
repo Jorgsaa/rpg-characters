@@ -41,6 +41,8 @@ public abstract class Character {
     }
 
     public void equip(Item item) {
+
+        // Check level requirement
         if (item.getRequiredLevel() <= level) {
             if (item instanceof Weapon weapon)
                 throw new InvalidWeaponException(ItemEquipExceptionType.LEVEL_INSUFFICIENT, this, weapon);
@@ -49,9 +51,11 @@ public abstract class Character {
             }
         }
 
+        // Check class compatibility with weapon type
         if (item instanceof Weapon weapon && !getValidWeaponTypes().contains(weapon.getType()))
             throw new InvalidWeaponException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, weapon);
 
+        // Check class compatibility with armor type
         if (item instanceof Armor armor && !getValidArmorTypes().contains(armor.getType()))
             throw new InvalidArmorException(ItemEquipExceptionType.CLASS_INCOMPATIBLE, this, armor);
 
