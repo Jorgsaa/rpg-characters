@@ -28,4 +28,8 @@ public abstract class Character {
     public void setLevel(Integer level) {
         this.level = level;
     }
+
+    public String getName() {
+        return name;
+    }
 }
