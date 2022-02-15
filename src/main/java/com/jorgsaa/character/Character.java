@@ -9,6 +9,7 @@ import com.jorgsaa.item.armor.ArmorType;
 import com.jorgsaa.item.armor.InvalidArmorException;
 import com.jorgsaa.item.weapon.InvalidWeaponException;
 import com.jorgsaa.item.weapon.Weapon;
+import com.jorgsaa.item.weapon.WeaponType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +29,8 @@ public abstract class Character {
     public abstract PrimaryAttribute getGainedPrimaryAttributes();
 
     public abstract List<ArmorType> getValidArmorTypes();
+
+    public abstract List<WeaponType> getValidWeaponTypes();
 
     protected abstract Double getCharacterDamageMultiplier();
 
