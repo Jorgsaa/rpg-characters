@@ -19,6 +19,6 @@ public class Rogue extends Character {
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1.01d * getGainedPrimaryAttributes().getDexterity();
+        return 1.01d * getTotalPrimaryAttributes().getDexterity();
     }
 }

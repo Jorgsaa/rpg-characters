@@ -19,6 +19,6 @@ public class Warrior extends Character {
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1.01d * getGainedPrimaryAttributes().getIntelligence();
+        return 1.01d * getTotalPrimaryAttributes().getIntelligence();
     }
 }
