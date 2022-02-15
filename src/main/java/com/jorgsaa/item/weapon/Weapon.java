@@ -14,4 +14,7 @@ public class Weapon extends Item {
         this.attackSpeed = attackSpeed;
     }
 
+    public Double getDPS() {
+        return attackSpeed * damage;
+    }
 }
