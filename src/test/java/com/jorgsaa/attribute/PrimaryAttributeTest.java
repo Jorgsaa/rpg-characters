@@ -127,4 +127,9 @@ public class PrimaryAttributeTest {
         );
     }
 
+    @Test
+    public void failing_test_example() {
+        assertEquals(2 + 2, 5);
+    }
+
 }
