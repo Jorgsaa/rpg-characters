@@ -5,7 +5,7 @@ import com.jorgsaa.attribute.PrimaryAttribute;
 public abstract class Character {
 
     private final String name;
-    private Integer level;
+    private Integer level = 1;
 
     protected Character(String name) {
         this.name = name;
