@@ -27,6 +27,12 @@ public abstract class Character {
 
     protected abstract Double getCharacterDamageMultiplier();
 
+    public PrimaryAttribute getTotalPrimaryAttributes() {
+        return getBasePrimaryAttributes()
+                .add(getGainedPrimaryAttributes())
+                .add(getEquippedArmorAttributes());
+    }
+
     public void equip(Item item) {
         if (item.getRequiredLevel() <= level) {
             if (item instanceof Weapon weapon)
