@@ -43,7 +43,7 @@ public abstract class Character {
     public void equip(Item item) {
 
         // Check level requirement
-        if (item.getRequiredLevel() <= level) {
+        if (item.getRequiredLevel() > level) {
             if (item instanceof Weapon weapon)
                 throw new InvalidWeaponException(ItemExceptionType.LEVEL_INSUFFICIENT, this, weapon);
             else if (item instanceof Armor armor) {
