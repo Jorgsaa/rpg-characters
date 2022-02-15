@@ -96,6 +96,10 @@ public abstract class Character {
         );
     }
 
+    public void levelUp() {
+        this.level++;
+    }
+
     public Integer getLevel() {
         return level;
     }
