@@ -84,6 +84,18 @@ public abstract class Character {
         return getEquippedWeaponDPS() * getCharacterDamageMultiplier();
     }
 
+    public String getStatsDisplay() {
+        PrimaryAttribute attrib = getTotalPrimaryAttributes();
+        return String.format("%s (Level %d) [ Strength: %3d Dexterity: %3d Intelligence: %3d ] DPS: %.2f",
+                name,
+                level,
+                attrib.getStrength(),
+                attrib.getDexterity(),
+                attrib.getIntelligence(),
+                getDPS()
+        );
+    }
+
     public Integer getLevel() {
         return level;
     }
