@@ -5,11 +5,13 @@ import com.jorgsaa.item.Item;
 import com.jorgsaa.item.ItemEquipExceptionType;
 import com.jorgsaa.item.Slot;
 import com.jorgsaa.item.armor.Armor;
+import com.jorgsaa.item.armor.ArmorType;
 import com.jorgsaa.item.armor.InvalidArmorException;
 import com.jorgsaa.item.weapon.InvalidWeaponException;
 import com.jorgsaa.item.weapon.Weapon;
 
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class Character {
 
@@ -24,6 +26,8 @@ public abstract class Character {
     public abstract PrimaryAttribute getBasePrimaryAttributes();
 
     public abstract PrimaryAttribute getGainedPrimaryAttributes();
+
+    public abstract List<ArmorType> getValidArmorTypes();
 
     protected abstract Double getCharacterDamageMultiplier();
 
