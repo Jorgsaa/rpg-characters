@@ -23,6 +23,14 @@ public final class PrimaryAttribute {
         );
     }
 
+    public PrimaryAttribute multiply(Integer multiplier) {
+        return of(
+                strength * multiplier,
+                dexterity * multiplier,
+                intelligence * multiplier
+        );
+    }
+
     public Integer getStrength() {
         return strength;
     }
