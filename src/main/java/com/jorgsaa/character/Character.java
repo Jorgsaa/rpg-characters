@@ -53,8 +53,18 @@ public abstract class Character {
                 .reduce(PrimaryAttribute.of(0, 0, 0), PrimaryAttribute::add); // Sum the attributes
     }
 
+    public Double getEquippedWeaponDPS() {
+        final Double weaponDPS = equipment.values().stream()
+                .filter(item -> item instanceof Weapon) // Filter for Weapon typed items
+                .map(item -> (Weapon) item) // Cast each item to Weapon
+                .map(Weapon::getDPS) // Map each weapon into DPS
+                .reduce(0d, Double::sum); // Sum the DPS
+
+        return weaponDPS != 0 ? weaponDPS : 1;
+    }
+
     public Double getDamage() {
-        return 0d;
+        return getEquippedWeaponDPS() * getCharacterDamageMultiplier();
     }
 
     public Integer getLevel() {
