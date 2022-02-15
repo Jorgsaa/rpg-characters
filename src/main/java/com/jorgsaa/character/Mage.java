@@ -9,16 +9,18 @@ public class Mage extends Character {
 
     @Override
     public PrimaryAttribute getBasePrimaryAttributes() {
-        return null;
+        return PrimaryAttribute.of(1, 1, 8);
     }
 
     @Override
     public PrimaryAttribute getTotalPrimaryAttributes() {
-        return null;
+        return getBasePrimaryAttributes().add(
+                PrimaryAttribute.of(1, 1, 5).multiply(getLevel() - 1)
+        );
     }
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return null;
+        return 1.01d * getTotalPrimaryAttributes().getIntelligence();
     }
 }
