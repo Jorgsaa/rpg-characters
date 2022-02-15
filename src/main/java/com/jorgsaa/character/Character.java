@@ -17,8 +17,8 @@ import java.util.List;
 public abstract class Character {
 
     private final String name;
+    private final HashMap<Slot, Item> equipment = new HashMap<>();
     private Integer level = 1;
-    private HashMap<Slot, Item> equipment;
 
     protected Character(String name) {
         this.name = name;
