@@ -130,4 +130,5 @@ public class MageTest {
         assertThrows(InvalidWeaponException.class, () -> mage.equip(weapon));
     }
 
+    //TODO: DPS tests
 }
