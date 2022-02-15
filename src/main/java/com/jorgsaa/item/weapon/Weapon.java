@@ -9,7 +9,7 @@ public class Weapon extends Item {
     private final Double damage;
     private final Double attackSpeed;
 
-    protected Weapon(String name, Integer requiredLevel, WeaponType type, Double damage, Double attackSpeed) {
+    public Weapon(String name, Integer requiredLevel, WeaponType type, Double damage, Double attackSpeed) {
         super(name, requiredLevel, Slot.WEAPON);
         this.type = type;
         this.damage = damage;

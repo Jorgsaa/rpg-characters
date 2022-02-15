@@ -9,7 +9,7 @@ public class Armor extends Item {
     private final ArmorType type;
     private final PrimaryAttribute attributes;
 
-    protected Armor(String name, Integer requiredLevel, Slot slot, ArmorType type, PrimaryAttribute attributes) {
+    public Armor(String name, Integer requiredLevel, Slot slot, ArmorType type, PrimaryAttribute attributes) {
         super(name, requiredLevel, slot);
         this.type = type;
         this.attributes = attributes;
