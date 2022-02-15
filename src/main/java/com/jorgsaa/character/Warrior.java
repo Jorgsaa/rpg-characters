@@ -13,14 +13,12 @@ public class Warrior extends Character {
     }
 
     @Override
-    public PrimaryAttribute getTotalPrimaryAttributes() {
-        return getBasePrimaryAttributes().add(
-                PrimaryAttribute.of(3, 2, 1).multiply(getLevel() - 1)
-        );
+    public PrimaryAttribute getGainedPrimaryAttributes() {
+        return PrimaryAttribute.of(3, 2, 1).multiply(getLevel() - 1);
     }
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1.01d * getTotalPrimaryAttributes().getIntelligence();
+        return 1.01d * getGainedPrimaryAttributes().getIntelligence();
     }
 }

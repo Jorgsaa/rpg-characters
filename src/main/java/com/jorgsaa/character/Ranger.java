@@ -13,14 +13,12 @@ public class Ranger extends Character {
     }
 
     @Override
-    public PrimaryAttribute getTotalPrimaryAttributes() {
-        return getBasePrimaryAttributes().add(
-                PrimaryAttribute.of(1, 5, 1).multiply(getLevel() - 1)
-        );
+    public PrimaryAttribute getGainedPrimaryAttributes() {
+        return PrimaryAttribute.of(1, 5, 1).multiply(getLevel() - 1);
     }
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1.01d * getTotalPrimaryAttributes().getDexterity();
+        return 1.01d * getGainedPrimaryAttributes().getDexterity();
     }
 }

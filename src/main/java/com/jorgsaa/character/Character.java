@@ -23,7 +23,7 @@ public abstract class Character {
 
     public abstract PrimaryAttribute getBasePrimaryAttributes();
 
-    public abstract PrimaryAttribute getTotalPrimaryAttributes();
+    public abstract PrimaryAttribute getGainedPrimaryAttributes();
 
     protected abstract Double getCharacterDamageMultiplier();
 
@@ -37,6 +37,14 @@ public abstract class Character {
         }
 
         equipment.put(item.getSlot(), item);
+    }
+
+    public PrimaryAttribute getEquippedArmorAttributes() {
+        return equipment.values().stream()
+                .filter(item -> item instanceof Armor) // Filter for Armor typed items
+                .map(item -> (Armor) item) // Cast each item to Armor
+                .map(Armor::getAttributes) // Map each armor into its attributes
+                .reduce(PrimaryAttribute.of(0, 0, 0), PrimaryAttribute::add); // Sum the attributes
     }
 
     public Double getDamage() {
