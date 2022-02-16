@@ -24,5 +24,9 @@ public class Weapon extends Item {
         return type;
     }
 
-    //TODO: toString
+    @Override
+    public String toString() {
+        return String.format("%s (Level %d) [ Damage: %3f Attack Speed: %3f ]", getName(), getRequiredLevel(), damage, attackSpeed);
+    }
+
 }
