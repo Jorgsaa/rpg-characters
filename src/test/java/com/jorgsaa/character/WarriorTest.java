@@ -37,6 +37,28 @@ class WarriorTest {
     }
 
     @Test
+    void toString_ContainsAttributes() {
+        // Act
+        String string = warrior.toString();
+
+        // Assert
+        assertThat(string, containsString(warrior.getTotalPrimaryAttributes().toString()));
+    }
+
+    @Test
+    void toString_ContainsEquipment() {
+        // Arrange
+        Armor armor = new Armor("Steel platebody", 0, Slot.BODY, ArmorType.PLATE, PrimaryAttribute.of(10, 0, 0));
+        warrior.equip(armor);
+
+        // Act
+        String string = warrior.toString();
+
+        // Assert
+        assertThat(string, containsString(armor.toString()));
+    }
+
+    @Test
     void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = warrior.getBasePrimaryAttributes();

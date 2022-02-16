@@ -37,6 +37,28 @@ class RogueTest {
     }
 
     @Test
+    void toString_ContainsAttributes() {
+        // Act
+        String string = rogue.toString();
+
+        // Assert
+        assertThat(string, containsString(rogue.getTotalPrimaryAttributes().toString()));
+    }
+
+    @Test
+    void toString_ContainsEquipment() {
+        // Arrange
+        Armor armor = new Armor("Iron chainmail", 0, Slot.BODY, ArmorType.MAIL, PrimaryAttribute.of(5, 1, 0));
+        rogue.equip(armor);
+
+        // Act
+        String string = rogue.toString();
+
+        // Assert
+        assertThat(string, containsString(armor.toString()));
+    }
+
+    @Test
     void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = rogue.getBasePrimaryAttributes();

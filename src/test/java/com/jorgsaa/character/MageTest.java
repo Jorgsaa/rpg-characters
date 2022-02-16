@@ -38,6 +38,28 @@ class MageTest {
     }
 
     @Test
+    void toString_ContainsAttributes() {
+        // Act
+        String string = mage.toString();
+
+        // Assert
+        assertThat(string, containsString(mage.getTotalPrimaryAttributes().toString()));
+    }
+
+    @Test
+    void toString_ContainsEquipment() {
+        // Arrange
+        Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, PrimaryAttribute.of(0, 2, 8));
+        mage.equip(armor);
+
+        // Act
+        String string = mage.toString();
+
+        // Assert
+        assertThat(string, containsString(armor.toString()));
+    }
+
+    @Test
     void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = mage.getBasePrimaryAttributes();

@@ -37,6 +37,28 @@ class RangerTest {
     }
 
     @Test
+    void toString_ContainsAttributes() {
+        // Act
+        String string = ranger.toString();
+
+        // Assert
+        assertThat(string, containsString(ranger.getTotalPrimaryAttributes().toString()));
+    }
+
+    @Test
+    void toString_ContainsEquipment() {
+        // Arrange
+        Armor armor = new Armor("Rangers' tunic", 0, Slot.BODY, ArmorType.LEATHER, PrimaryAttribute.of(0, 9, 0));
+        ranger.equip(armor);
+
+        // Act
+        String string = ranger.toString();
+
+        // Assert
+        assertThat(string, containsString(armor.toString()));
+    }
+
+    @Test
     void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = ranger.getBasePrimaryAttributes();
