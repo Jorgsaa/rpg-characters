@@ -26,5 +26,9 @@ public class Armor extends Item {
         return type;
     }
 
-    //TODO: toString
+    @Override
+    public String toString() {
+        return String.format("%s (Level %d) %s ", getName(), getRequiredLevel(), attributes);
+    }
+
 }
