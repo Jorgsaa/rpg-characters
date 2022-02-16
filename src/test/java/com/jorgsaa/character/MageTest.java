@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MageTest {
+class MageTest {
 
     private Mage mage;
 
@@ -32,19 +32,19 @@ public class MageTest {
     }
 
     @Test
-    public void getBasePrimaryAttributes_ReturnsNonNullValues() {
+    void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = mage.getBasePrimaryAttributes();
 
         // Assert
         assertThat(
                 List.of(attribs.getStrength(), attribs.getDexterity(), attribs.getIntelligence()),
-                not(hasItem((Integer)null))
+                not(hasItem((Integer) null))
         );
     }
 
     @Test
-    public void getGainedPrimaryAttributes_AfterLevelUp_ReturnsChangedValues() {
+    void getGainedPrimaryAttributes_AfterLevelUp_ReturnsChangedValues() {
         // Arrange
         final PrimaryAttribute before = mage.getGainedPrimaryAttributes();
 
@@ -60,7 +60,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidArmorTypes_WhenArmorValid_ShouldEquipArmor() {
+    void getValidArmorTypes_WhenArmorValid_ShouldEquipArmor() {
         // Arrange
         Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, PrimaryAttribute.of(0, 2, 8));
 
@@ -73,7 +73,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidArmorTypes_WhenArmorTypeIncompatible_ThrowsException() {
+    void getValidArmorTypes_WhenArmorTypeIncompatible_ThrowsException() {
         // Arrange
         Armor armor = new Armor("Steel platebody", 0, Slot.BODY, ArmorType.PLATE, PrimaryAttribute.of(10, 0, 0));
 
@@ -82,7 +82,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidArmorTypes_WhenCharacterLevelInsufficient_ThrowsException() {
+    void getValidArmorTypes_WhenCharacterLevelInsufficient_ThrowsException() {
         // Arrange
         Armor armor = new Armor("Dark wizard robe", 50, Slot.BODY, ArmorType.CLOTH, PrimaryAttribute.of(0, 20, 100));
 
@@ -91,7 +91,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidArmorTypes_WhenCharacterLevelInsufficientAndIncompatibleType_ThrowsException() {
+    void getValidArmorTypes_WhenCharacterLevelInsufficientAndIncompatibleType_ThrowsException() {
         // Arrange
         Armor armor = new Armor("Dark steel platebody", 50, Slot.BODY, ArmorType.PLATE, PrimaryAttribute.of(10, 0, 0));
 
@@ -100,7 +100,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidWeaponTypes_WhenWeaponValid_ShouldEquipWeapon() {
+    void getValidWeaponTypes_WhenWeaponValid_ShouldEquipWeapon() {
         // Arrange
         Weapon weapon = new Weapon("Wizard wand", 0, WeaponType.WAND, 14d, 0.7);
 
@@ -113,7 +113,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidWeaponType_WhenWeaponTypeIncompatible_ThrowsException() {
+    void getValidWeaponType_WhenWeaponTypeIncompatible_ThrowsException() {
         // Arrange
         Weapon weapon = new Weapon("Steel axe", 0, WeaponType.AXE, 10d, 1.4d);
 
@@ -122,7 +122,7 @@ public class MageTest {
     }
 
     @Test
-    public void getValidWeaponType_WhenCharacterLevelInsufficient_ThrowsException() {
+    void getValidWeaponType_WhenCharacterLevelInsufficient_ThrowsException() {
         // Arrange
         Weapon weapon = new Weapon("Dark steel axe", 50, WeaponType.AXE, 100d, 1.4d);
 

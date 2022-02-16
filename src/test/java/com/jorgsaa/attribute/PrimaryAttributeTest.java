@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PrimaryAttributeTest {
+class PrimaryAttributeTest {
 
     private PrimaryAttribute attribute;
     public static final Integer STRENGTH_ORIGINAL = 1;
@@ -27,25 +27,25 @@ public class PrimaryAttributeTest {
     }
 
     @Test
-    public void getStrength_WhenValid_ReturnsOriginal() {
+    void getStrength_WhenValid_ReturnsOriginal() {
         // Assert
         assertEquals(STRENGTH_ORIGINAL, attribute.getStrength());
     }
 
     @Test
-    public void getDexterity_WhenValid_ReturnsOriginal() {
+    void getDexterity_WhenValid_ReturnsOriginal() {
         // Assert
         assertEquals(DEXTERITY_ORIGINAL, attribute.getDexterity());
     }
 
     @Test
-    public void getIntelligence_WhenValid_ReturnsOriginal() {
+    void getIntelligence_WhenValid_ReturnsOriginal() {
         // Assert
         assertEquals(INTELLIGENCE_ORIGINAL, attribute.getIntelligence());
     }
 
     @Test
-    public void of_WhenValid_ReturnsCorrectAttributeValues() {
+    void of_WhenValid_ReturnsCorrectAttributeValues() {
 
         // Act
         attribute = PrimaryAttribute.of(10, 20, 30);
@@ -67,7 +67,7 @@ public class PrimaryAttributeTest {
     }
 
     @Test
-    public void add_WhenValid_ReturnsCorrectAttributeValues() {
+    void add_WhenValid_ReturnsCorrectAttributeValues() {
 
         // Act
         attribute = attribute.add(PrimaryAttribute.of(-1, -2, -3));
@@ -96,7 +96,7 @@ public class PrimaryAttributeTest {
     }
 
     @Test
-    public void multiply_WhenValid_ReturnsCorrectAttributeValues() {
+    void multiply_WhenValid_ReturnsCorrectAttributeValues() {
 
         // Arrange
         int multiplier = 100;

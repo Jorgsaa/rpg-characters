@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WeaponTest {
+class WeaponTest {
 
     private static final String ORIGINAL_NAME = "Steel axe";
     private static final int ORIGINAL_LEVEL = 10;
@@ -22,27 +22,27 @@ public class WeaponTest {
     }
 
     @Test
-    public void getDPS_ReturnsCorrectValue() {
+    void getDPS_ReturnsCorrectValue() {
         assertEquals(ORIGINAL_DAMAGE * ORIGINAL_ATTACK_SPEED, weapon.getDPS());
     }
 
     @Test
-    public void getType_ReturnsOriginalType() {
+    void getType_ReturnsOriginalType() {
         assertEquals(ORIGINAL_TYPE, weapon.getType());
     }
 
     @Test
-    public void getName_ReturnsOriginalName() {
+    void getName_ReturnsOriginalName() {
         assertEquals(ORIGINAL_NAME, weapon.getName());
     }
 
     @Test
-    public void getRequiredLevel_ReturnsOriginalRequiredLevel() {
+    void getRequiredLevel_ReturnsOriginalRequiredLevel() {
         assertEquals(ORIGINAL_LEVEL, weapon.getRequiredLevel());
     }
 
     @Test
-    public void getSlot_ReturnsCorrectSlot() {
+    void getSlot_ReturnsCorrectSlot() {
         assertEquals(Slot.WEAPON, weapon.getSlot());
     }
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ArmorTest {
+class ArmorTest {
 
     private Armor armor;
 
@@ -24,32 +24,32 @@ public class ArmorTest {
     }
 
     @Test
-    public void getAttributes_ReturnsOriginalAttributes() {
+    void getAttributes_ReturnsOriginalAttributes() {
         assertEquals(ORIGINAL_ATTRIBUTES, armor.getAttributes());
     }
 
     @Test
-    public void getType_ReturnsOriginalType() {
+    void getType_ReturnsOriginalType() {
         assertEquals(ORIGINAL_TYPE, armor.getType());
     }
 
     @Test
-    public void getName_ReturnsOriginalName() {
+    void getName_ReturnsOriginalName() {
         assertEquals(ORIGINAL_NAME, armor.getName());
     }
 
     @Test
-    public void getRequiredLevel_ReturnsOriginalRequiredLevel() {
+    void getRequiredLevel_ReturnsOriginalRequiredLevel() {
         assertEquals(ORIGINAL_LEVEL, armor.getRequiredLevel());
     }
 
     @Test
-    public void getSlot_ReturnsOriginalSlot() {
+    void getSlot_ReturnsOriginalSlot() {
         assertEquals(ORIGINAL_SLOT, armor.getSlot());
     }
 
     @Test
-    public void constructor_WhenSlotIncompatible_ThrowsException() {
+    void constructor_WhenSlotIncompatible_ThrowsException() {
         assertThrows(
                 InvalidArmorException.class,
                 () -> armor = new Armor(ORIGINAL_NAME, 10, Slot.WEAPON, ORIGINAL_TYPE, ORIGINAL_ATTRIBUTES)
