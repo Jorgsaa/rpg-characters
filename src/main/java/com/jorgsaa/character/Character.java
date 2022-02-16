@@ -102,12 +102,14 @@ public abstract class Character {
 
     @Override
     public String toString() {
-        return String.format("%s (Level %d) %s DPS: %.2f",
-                name,
-                level,
-                getTotalPrimaryAttributes(),
-                getDPS()
-        );
+        String character = String.format("%s (Level %d) %s DPS: %.2f", name, level, getTotalPrimaryAttributes(), getDPS());
+        StringBuilder builder = new StringBuilder(character);
+        builder.append("\n Equipment: [\n");
+        for (Item item : equipment.values()) {
+            builder.append("\t").append(item).append("\n");
+        }
+        builder.append("]");
+        return builder.toString();
     }
 
     public Item getEquipment(Slot slot) {
