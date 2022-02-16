@@ -29,19 +29,19 @@ class PrimaryAttributeTest {
     @Test
     void getStrength_WhenValid_ReturnsOriginal() {
         // Assert
-        assertEquals(STRENGTH_ORIGINAL, attribute.getStrength());
+        assertEquals(STRENGTH_ORIGINAL, attribute.strength());
     }
 
     @Test
     void getDexterity_WhenValid_ReturnsOriginal() {
         // Assert
-        assertEquals(DEXTERITY_ORIGINAL, attribute.getDexterity());
+        assertEquals(DEXTERITY_ORIGINAL, attribute.dexterity());
     }
 
     @Test
     void getIntelligence_WhenValid_ReturnsOriginal() {
         // Assert
-        assertEquals(INTELLIGENCE_ORIGINAL, attribute.getIntelligence());
+        assertEquals(INTELLIGENCE_ORIGINAL, attribute.intelligence());
     }
 
     @Test
@@ -52,9 +52,9 @@ class PrimaryAttributeTest {
 
         // Assert
         List<Integer> newPrimaryAttributes = List.of(
-                attribute.getStrength(),
-                attribute.getDexterity(),
-                attribute.getIntelligence()
+                attribute.strength(),
+                attribute.dexterity(),
+                attribute.intelligence()
         );
 
         assertThat(newPrimaryAttributes, not(anyOf(
@@ -74,9 +74,9 @@ class PrimaryAttributeTest {
 
         // Assert
         List<Integer> newPrimaryAttributes = List.of(
-                attribute.getStrength(),
-                attribute.getDexterity(),
-                attribute.getIntelligence()
+                attribute.strength(),
+                attribute.dexterity(),
+                attribute.intelligence()
         );
 
         assertThat(
@@ -106,9 +106,9 @@ class PrimaryAttributeTest {
 
         // Assert
         List<Integer> newPrimaryAttributes = List.of(
-                attribute.getStrength(),
-                attribute.getDexterity(),
-                attribute.getIntelligence()
+                attribute.strength(),
+                attribute.dexterity(),
+                attribute.intelligence()
         );
 
         assertThat(

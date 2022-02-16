@@ -6,8 +6,10 @@ import com.jorgsaa.item.weapon.WeaponType;
 
 import java.util.List;
 
-import static com.jorgsaa.item.armor.ArmorType.*;
-import static com.jorgsaa.item.weapon.WeaponType.*;
+import static com.jorgsaa.item.armor.ArmorType.LEATHER;
+import static com.jorgsaa.item.armor.ArmorType.MAIL;
+import static com.jorgsaa.item.weapon.WeaponType.DAGGER;
+import static com.jorgsaa.item.weapon.WeaponType.SWORD;
 
 public class Rogue extends Character {
 
@@ -37,7 +39,7 @@ public class Rogue extends Character {
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1 + (0.01d * getTotalPrimaryAttributes().getDexterity());
+        return 1 + (0.01d * getTotalPrimaryAttributes().dexterity());
     }
 
 }

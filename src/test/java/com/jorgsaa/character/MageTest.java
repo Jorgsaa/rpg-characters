@@ -44,7 +44,7 @@ class MageTest {
 
         // Assert
         assertThat(
-                List.of(attribs.getStrength(), attribs.getDexterity(), attribs.getIntelligence()),
+                List.of(attribs.strength(), attribs.dexterity(), attribs.intelligence()),
                 not(hasItem((Integer) null))
         );
     }
@@ -60,8 +60,8 @@ class MageTest {
 
         // Assert
         assertThat(
-                List.of(before.getStrength(), before.getDexterity(), before.getIntelligence()),
-                not(contains(after.getStrength(), after.getDexterity(), after.getIntelligence()))
+                List.of(before.strength(), before.dexterity(), before.intelligence()),
+                not(contains(after.strength(), after.dexterity(), after.intelligence()))
         );
     }
 

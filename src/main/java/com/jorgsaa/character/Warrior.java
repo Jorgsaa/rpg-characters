@@ -6,7 +6,8 @@ import com.jorgsaa.item.weapon.WeaponType;
 
 import java.util.List;
 
-import static com.jorgsaa.item.armor.ArmorType.*;
+import static com.jorgsaa.item.armor.ArmorType.MAIL;
+import static com.jorgsaa.item.armor.ArmorType.PLATE;
 import static com.jorgsaa.item.weapon.WeaponType.*;
 
 public class Warrior extends Character {
@@ -37,7 +38,7 @@ public class Warrior extends Character {
 
     @Override
     protected Double getCharacterDamageMultiplier() {
-        return 1 + (0.01d * getTotalPrimaryAttributes().getIntelligence());
+        return 1 + (0.01d * getTotalPrimaryAttributes().strength());
     }
 
 }

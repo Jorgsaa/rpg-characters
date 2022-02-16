@@ -23,18 +23,6 @@ public record PrimaryAttribute(Integer strength, Integer dexterity,
         );
     }
 
-    public Integer getStrength() {
-        return strength;
-    }
-
-    public Integer getDexterity() {
-        return dexterity;
-    }
-
-    public Integer getIntelligence() {
-        return intelligence;
-    }
-
     @Override
     public String toString() {
         return String.format("[ Strength: %3d Dexterity: %3d Intelligence: %3d ]", strength, dexterity, intelligence);
