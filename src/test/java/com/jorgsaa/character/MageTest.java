@@ -32,6 +32,12 @@ class MageTest {
     }
 
     @Test
+    void getName_ReturnsOriginalValue() {
+        // Assert
+        assertEquals(ORIGINAL_NAME, mage.getName());
+    }
+
+    @Test
     void getBasePrimaryAttributes_ReturnsNonNullValues() {
         // Arrange
         final PrimaryAttribute attribs = mage.getBasePrimaryAttributes();
@@ -77,6 +83,9 @@ class MageTest {
         // Arrange
         Armor armor = new Armor("Steel platebody", 0, Slot.BODY, ArmorType.PLATE, PrimaryAttribute.of(10, 0, 0));
 
+        // Act
+        mage.setLevel(10);
+
         // Assert
         assertThrows(InvalidArmorException.class, () -> mage.equip(armor));
     }
@@ -86,6 +95,9 @@ class MageTest {
         // Arrange
         Armor armor = new Armor("Dark wizard robe", 50, Slot.BODY, ArmorType.CLOTH, PrimaryAttribute.of(0, 20, 100));
 
+        // Act
+        mage.setLevel(49);
+
         // Assert
         assertThrows(InvalidArmorException.class, () -> mage.equip(armor));
     }
@@ -94,6 +106,9 @@ class MageTest {
     void getValidArmorTypes_WhenCharacterLevelInsufficientAndIncompatibleType_ThrowsException() {
         // Arrange
         Armor armor = new Armor("Dark steel platebody", 50, Slot.BODY, ArmorType.PLATE, PrimaryAttribute.of(10, 0, 0));
+
+        // Act
+        mage.setLevel(49);
 
         // Assert
         assertThrows(InvalidArmorException.class, () -> mage.equip(armor));
@@ -125,6 +140,9 @@ class MageTest {
     void getValidWeaponType_WhenCharacterLevelInsufficient_ThrowsException() {
         // Arrange
         Weapon weapon = new Weapon("Dark steel axe", 50, WeaponType.AXE, 100d, 1.4d);
+
+        // Act
+        mage.setLevel(49);
 
         // Assert
         assertThrows(InvalidWeaponException.class, () -> mage.equip(weapon));
