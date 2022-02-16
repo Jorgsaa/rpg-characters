@@ -28,7 +28,7 @@ mvn -B test --file pom.xml
 
 ## Maintainers
 
-[Jørgen Saanum @Jorgsaa](https://github.com/@Jorgsaa)
+[Jørgen Saanum @Jorgsaa](https://github.com/Jorgsaa)
 
 ## Contributing
 
