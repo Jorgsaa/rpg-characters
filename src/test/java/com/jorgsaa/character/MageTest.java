@@ -148,5 +148,166 @@ class MageTest {
         assertThrows(InvalidWeaponException.class, () -> mage.equip(weapon));
     }
 
-    //TODO: DPS tests
+    @Test
+    void getTotalPrimaryAttributes_WhenLevel1AndNoEquipment_EqualsBaseAttributes() {
+        // Arrange
+        PrimaryAttribute baseAttribs = mage.getBasePrimaryAttributes();
+
+        // Act
+        mage.setLevel(1);
+
+        // Assert
+        assertEquals(baseAttribs, mage.getTotalPrimaryAttributes());
+    }
+
+    @Test
+    void getTotalPrimaryAttributes_WhenLevel2AndNoEquipment_EqualsSumOfBaseAndGainedAttributes() {
+        // Arrange
+        PrimaryAttribute baseAttribs = mage.getBasePrimaryAttributes();
+
+        // Act
+        mage.setLevel(2);
+        PrimaryAttribute gainedAttribs = mage.getGainedPrimaryAttributes();
+
+        // Assert
+        assertEquals(baseAttribs.add(gainedAttribs), mage.getTotalPrimaryAttributes());
+    }
+
+    @Test
+    void getTotalPrimaryAttributes_WhenLevel1AndArmor_EqualsSumOfBaseAndEquippedArmorAttributes() {
+        // Arrange
+        PrimaryAttribute armorAttribs = PrimaryAttribute.of(0, 0, 10);
+        Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, armorAttribs);
+        PrimaryAttribute baseAttribs = mage.getBasePrimaryAttributes();
+        mage.equip(armor);
+
+        // Act
+        PrimaryAttribute equippedArmorAttributes = mage.getEquippedArmorAttributes();
+
+        // Assert
+        assertEquals(baseAttribs.add(equippedArmorAttributes), mage.getTotalPrimaryAttributes());
+    }
+
+    @Test
+    void getTotalPrimaryAttributes_WhenLevel10AndArmor_EqualsSumOfBaseAndGainedAndEquippedArmorAttributes() {
+        // Arrange
+        PrimaryAttribute armorAttribs = PrimaryAttribute.of(0, 0, 10);
+        Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, armorAttribs);
+        PrimaryAttribute baseAttribs = mage.getBasePrimaryAttributes();
+        PrimaryAttribute gainedAttribs = mage.getGainedPrimaryAttributes();
+        mage.equip(armor);
+
+        // Act
+        PrimaryAttribute equippedArmorAttributes = mage.getEquippedArmorAttributes();
+
+        // Assert
+        assertEquals(
+                baseAttribs
+                        .add(equippedArmorAttributes)
+                        .add(gainedAttribs),
+                mage.getTotalPrimaryAttributes()
+        );
+    }
+
+    @Test
+    void getGainedPrimaryAttributes_WhenLevel1_ReturnsZeroAttributes() {
+        // Act
+        mage.setLevel(1);
+
+        // Assert
+        assertEquals(PrimaryAttribute.of(0, 0, 0), mage.getGainedPrimaryAttributes());
+    }
+
+    @Test
+    void getDPS_WhenLevel1AndNoEquipment_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(1);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(1 * (1 + 0.01d * attribs.intelligence()), dps);
+    }
+
+    @Test
+    void getDPS_WhenLevel10AndNoEquipment_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(10);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(1 + (0.01d * attribs.intelligence()), dps);
+    }
+
+    @Test
+    void getDps_WhenLevel1AndEquippedWeapon_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(1);
+        Weapon weapon = new Weapon("Wand", 0, WeaponType.WAND, 10d, 1.5);
+        mage.equip(weapon);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(weapon.getDPS() * (1 + 0.01d * attribs.intelligence()), dps);
+    }
+
+    @Test
+    void getDps_WhenLevel10AndWeapon_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(10);
+        Weapon weapon = new Weapon("Wand", 0, WeaponType.WAND, 10d, 1.5);
+        mage.equip(weapon);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(weapon.getDPS() * (1 + 0.01d * attribs.intelligence()), dps);
+    }
+
+    @Test
+    void getDps_WhenLevel1AndEquippedWeaponAndArmor_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(1);
+        PrimaryAttribute armorAttribs = PrimaryAttribute.of(0, 0, 10);
+        Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, armorAttribs);
+        Weapon weapon = new Weapon("Wand", 0, WeaponType.WAND, 10d, 1.5);
+        mage.equip(weapon);
+        mage.equip(armor);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(weapon.getDPS() * (1 + 0.01d * attribs.intelligence()), dps);
+    }
+
+    @Test
+    void getDps_WhenLevel10AndEquippedWeaponAndArmor_ReturnsExpectedValue() {
+        // Arrange
+        mage.setLevel(1);
+        PrimaryAttribute armorAttribs = PrimaryAttribute.of(0, 0, 10);
+        Armor armor = new Armor("Wizard robe", 0, Slot.BODY, ArmorType.CLOTH, armorAttribs);
+        Weapon weapon = new Weapon("Wand", 0, WeaponType.WAND, 10d, 1.5);
+        mage.equip(weapon);
+        mage.equip(armor);
+        PrimaryAttribute attribs = mage.getTotalPrimaryAttributes();
+
+        // Act
+        Double dps = mage.getDPS();
+
+        // Assert
+        assertEquals(weapon.getDPS() * (1 + 0.01d * attribs.intelligence()), dps);
+    }
+
 }
