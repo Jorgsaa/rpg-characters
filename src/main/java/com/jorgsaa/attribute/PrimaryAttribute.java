@@ -1,16 +1,7 @@
 package com.jorgsaa.attribute;
 
-public final class PrimaryAttribute {
-
-    private final Integer strength;
-    private final Integer dexterity;
-    private final Integer intelligence;
-
-    private PrimaryAttribute(Integer strength, Integer dexterity, Integer intelligence) {
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.intelligence = intelligence;
-    }
+public record PrimaryAttribute(Integer strength, Integer dexterity,
+                               Integer intelligence) {
 
     public static PrimaryAttribute of(Integer strength, Integer dexterity, Integer intelligence) {
         return new PrimaryAttribute(strength, dexterity, intelligence);
@@ -42,6 +33,11 @@ public final class PrimaryAttribute {
 
     public Integer getIntelligence() {
         return intelligence;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[ Strength: %3d Dexterity: %3d Intelligence: %3d ]", strength, dexterity, intelligence);
     }
 
 }

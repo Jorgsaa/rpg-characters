@@ -11,13 +11,13 @@ import com.jorgsaa.item.weapon.InvalidWeaponException;
 import com.jorgsaa.item.weapon.Weapon;
 import com.jorgsaa.item.weapon.WeaponType;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 
 public abstract class Character {
 
     private final String name;
-    private final HashMap<Slot, Item> equipment = new HashMap<>();
+    private final EnumMap<Slot, Item> equipment = new EnumMap<>(Slot.class);
     private Integer level = 1;
 
     protected Character(String name) {
@@ -64,16 +64,16 @@ public abstract class Character {
 
     public PrimaryAttribute getEquippedArmorAttributes() {
         return equipment.values().stream()
-                .filter(item -> item instanceof Armor) // Filter for Armor typed items
-                .map(item -> (Armor) item) // Cast each item to Armor
+                .filter(Armor.class::isInstance) // Filter for Armor typed items
+                .map(Armor.class::cast) // Cast each item to Armor
                 .map(Armor::getAttributes) // Map each armor into its attributes
                 .reduce(PrimaryAttribute.of(0, 0, 0), PrimaryAttribute::add); // Sum the attributes
     }
 
     public Double getEquippedWeaponDPS() {
         final Double weaponDPS = equipment.values().stream()
-                .filter(item -> item instanceof Weapon) // Filter for Weapon typed items
-                .map(item -> (Weapon) item) // Cast each item to Weapon
+                .filter(Weapon.class::isInstance) // Filter for Weapon typed items
+                .map(Weapon.class::cast) // Cast each item to Weapon
                 .map(Weapon::getDPS) // Map each weapon into DPS
                 .reduce(0d, Double::sum); // Sum the DPS
 
@@ -102,13 +102,10 @@ public abstract class Character {
 
     @Override
     public String toString() {
-        PrimaryAttribute attrib = getTotalPrimaryAttributes();
-        return String.format("%s (Level %d) [ Strength: %3d Dexterity: %3d Intelligence: %3d ] DPS: %.2f",
+        return String.format("%s (Level %d) %s DPS: %.2f",
                 name,
                 level,
-                attrib.getStrength(),
-                attrib.getDexterity(),
-                attrib.getIntelligence(),
+                getTotalPrimaryAttributes(),
                 getDPS()
         );
     }
